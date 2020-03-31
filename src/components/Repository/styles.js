@@ -30,7 +30,7 @@ export const Stat = styled.View`
   margin-right: 15px;
 `;
 
-export const StarCount = styled.Text`
+export const StatCount = styled.Text`
   margin-left: 6px;
 `;
 

@@ -48,9 +48,13 @@ export default function Main() {
     }
   }
 
-  // async function handleRefreshRepository(repository) {
-  //   const response = await api.get(`/repos/${repository.fullName});
-  // }
+  async function handleRefreshRepository(repository) {
+    const response = await api.get(`/repos/${repository.fullName}`);
+    const data = await saveRepository(response.data);
+    setRepositories(
+      repositories.map(repo => (repo.id === data.id ? data : repo)),
+    );
+  }
 
   return (
     <Container>
@@ -62,7 +66,7 @@ export default function Main() {
           onChangeText={setInput}
           autoCapitalize="none"
           autoCorrect={false}
-          placeholder="Procurar repositórios..."
+          placeholder="Procurar repositório..."
         />
         <Submit onPress={handleAddRepository}>
           <Icon name="add" size={22} color="#FFF" />
@@ -75,8 +79,10 @@ export default function Main() {
         renderItem={({item}) => (
           <Repository
             data={item}
-            onRefresh={() => handleRefreshRepository(item)}></Repository>
-        )}></List>
+            onRefresh={() => handleRefreshRepository(item)}
+          />
+        )}
+      />
     </Container>
   );
 }

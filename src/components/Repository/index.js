@@ -6,7 +6,7 @@ import {
   Description,
   Stats,
   Stat,
-  StarCount,
+  StatCount,
   Refresh,
   RefreshText,
 } from './styles';
@@ -19,11 +19,11 @@ export default function Repository({data, onRefresh}) {
       <Stats>
         <Stat>
           <Icon name="star" size={16} color="#333"></Icon>
-          <StarCount>{data.stars}</StarCount>
+          <StatCount>{data.stars}</StatCount>
         </Stat>
         <Stat>
           <Icon name="code-fork" size={16} color="#333"></Icon>
-          <StarCount>{data.forks}</StarCount>
+          <StatCount>{data.forks}</StatCount>
         </Stat>
       </Stats>
       <Refresh onPress={onRefresh}>
